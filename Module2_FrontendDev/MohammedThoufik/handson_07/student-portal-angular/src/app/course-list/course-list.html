@@ -1,0 +1,32 @@
+<h2>Courses</h2>
+
+<input
+type="text"
+placeholder="Search course..."
+[(ngModel)]="searchTerm">
+
+<div
+*ngFor="let course of courses">
+
+<app-course-card
+
+*ngIf="course.name.toLowerCase().includes(searchTerm.toLowerCase())"
+
+[name]="course.name"
+
+[code]="course.code"
+
+[credits]="course.credits"
+
+[grade]="course.grade">
+
+</app-course-card>
+
+</div>
+
+<p
+*ngIf="courses.filter(c=>c.name.toLowerCase().includes(searchTerm.toLowerCase())).length===0">
+
+No courses found
+
+</p>
